@@ -39,6 +39,7 @@ export default {
   justify-content: center;
   cursor: pointer;
   padding: 1rem;
+  transition: 0.3s;
 
   .feature__icon {
     font-size: 2.74306rem;
@@ -80,5 +81,9 @@ export default {
     font-weight: 400;
     line-height: normal;
   }
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 </style>

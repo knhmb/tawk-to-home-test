@@ -1,18 +1,42 @@
 <template>
   <div class="search">
-    <input type="text" placeholder="Search for answers" v-model="search" />
-    <div class="search__icon">
+    <input
+      v-on:keyup.enter="handleSearch"
+      type="text"
+      placeholder="Search for answers"
+      v-model="search"
+    />
+    <div @click="handleSearch" class="search__icon">
       <i class="fa fa-search"></i>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import store from "../store";
+
 export default {
   data() {
     return {
       search: "",
     };
+  },
+  methods: {
+    async handleSearch(event) {
+      const response = await axios.get(
+        `http://localhost:9000/api/search/${this.search}`
+      );
+
+      store.articles = response.data;
+
+      this.$router.push({
+        path: "/search-result",
+        query: { search: this.search },
+      });
+
+      this.search = "";
+    },
   },
 };
 </script>

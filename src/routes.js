@@ -3,6 +3,7 @@ import Vue from "vue";
 
 import Home from "./pages/Home.vue";
 import Category from "./pages/Category.vue";
+import SearchResult from "./pages/SearchResult.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,7 @@ var router = new VueRouter({
     { path: "/", redirect: "/home" },
     { path: "/home", component: Home },
     { path: "/category/:id", component: Category, name: "category" },
+    { path: "/search-result", component: SearchResult, name: "search" },
   ],
 });
 
